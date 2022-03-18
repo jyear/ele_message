@@ -1,5 +1,7 @@
 const socketHandler = {
-  sendMessage: async () => {},
+  sendMessage: async () => {
+    console.log(123);
+  },
 };
 
 export default socketHandler;
