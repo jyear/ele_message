@@ -1,7 +1,7 @@
 module.exports = function (db) {
 	const createTable = () => {
 		db.serialize(() => {
-			db.run(`CREATE TABLE IF NOT EXISTS Users( 
+			db.run(`CREATE TABLE IF NOT EXISTS users( 
                   serverID       TEXT NOT NULL, 
                   isActive       BOOLEAN,
                   nickname       TEXT,
@@ -26,10 +26,10 @@ module.exports = function (db) {
 		db.serialize(() => {
 			db.run("BEGIN");
 			let stmt = db.prepare(
-				`insert into Users values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+				`insert into users values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 			);
 
-			for (let i = 0; i < 10000; i++) {
+			for (let i = 0; i < 10; i++) {
 				stmt.run(`'as_${Math.random()}'${data}`);
 			}
 			stmt.finalize();
@@ -38,11 +38,11 @@ module.exports = function (db) {
 	};
 
 	const select = () => {
+		console.log("123123123");
 		return new Promise((resolve, reject) => {
-			//
 			db.serialize(() => {
 				db.all(
-					`select * from Users order by serverID desc limit 10`,
+					`select * from users order by serverID desc limit 10`,
 					(err, res) => {
 						if (err !== null) {
 							reject(err);

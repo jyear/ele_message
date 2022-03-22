@@ -19,5 +19,6 @@ ipcMain.handle("sql", async (event, arg) => {
 	//const runSql = await sql();
 	const { table, fun, data } = arg;
 	const res = await runSql[table][fun](data);
+
 	return res;
 });
