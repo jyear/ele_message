@@ -1,4 +1,5 @@
 import sqlHandlers from "./sql";
+import socketHandlers from "./socket";
 import Help from "./help";
 
 export interface EventData {
@@ -9,14 +10,12 @@ export interface EventData {
 // 初始化
 const help = new Help();
 const handlers = {
-	SendMessage: (eventData: EventData) => {
+	// 存入数据库
+	SendMessage: (eventData: EventData): Promise<unknown | Error> => {
 		return new Promise((resolve, reject) => {
 			const task = async () => {
-				const len = 400;
 				let data = [];
-				for (let i = 0; i < len; i++) {
-					await sqlHandlers.saveMessage();
-				}
+				sqlHandlers.saveMessage();
 				data = await sqlHandlers.getMessage();
 				resolve(data);
 			};
