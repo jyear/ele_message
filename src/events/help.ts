@@ -28,9 +28,9 @@ class EventHelp {
 	async workLoop() {
 		if (this.eventList.length <= 0) return;
 		const doObj = this.peek();
-		const data = await doObj.handler();
+		doObj.handler();
 		if (doObj.callback) {
-			doObj.callback(data);
+			doObj.callback();
 		}
 		this.workLoop();
 	}
