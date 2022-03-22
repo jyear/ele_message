@@ -1,5 +1,5 @@
 const config={
-  "URI": "resources/index.html",
-  "env": "TEST"
+  "URI": "http://127.0.0.1:9000",
+  "env": "DEV"
 };
 module.exports=config;
