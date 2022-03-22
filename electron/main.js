@@ -2,7 +2,7 @@ const { app, ipcMain } = require("electron");
 const { createWindow } = require("./util");
 
 const config = require("./config");
-const sql = require("../sql/index");
+const runSql = require("../sql/index");
 
 app.on("ready", () => {
 	const win = createWindow(config);
@@ -15,9 +15,9 @@ app.on("ready", () => {
 		win.webContents.openDevTools();
 	}
 });
-
 ipcMain.handle("sql", async (event, arg) => {
+	//const runSql = await sql();
 	const { table, fun, data } = arg;
-	const res = await sql[table][fun](data);
+	const res = await runSql[table][fun](data);
 	return res;
 });

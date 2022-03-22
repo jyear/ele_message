@@ -1,7 +1,9 @@
 const spawn = require("child_process").spawn;
 const path = require("path");
 const os = require("os");
+
 process.env.RUN_ENV = "DEV";
+require("./genConfig");
 // 开发环境以子线程启动两个命令
 
 let webpackBinPath = path.resolve(
