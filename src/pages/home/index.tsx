@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { TextState } from "../../store/index";
 import eventHandler from "../../events/index";
+import { useRecoilState } from "recoil";
+import "./index.less";
+
 interface MessageItem {
-  serverID: Number;
-  nickname: String;
+	serverID: Number;
+	nickname: String;
 }
 
 const Home: React.FC = () => {
   const [users, setUsers] = useState<Array<MessageItem>>([]);
+  const [text, setText] = useRecoilState(TextState);
 
   useEffect(() => {
     eventHandler({
@@ -26,9 +31,16 @@ const Home: React.FC = () => {
     });
   };
 
+  const textNew = () => {
+    setText(
+      "zxczm,xcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasadxcasad"
+    );
+  };
+
   return (
-    <div>
+    <div className="test">
       <button onClick={addNewData}>新增数据</button>
+      <button onClick={textNew}>{text}</button>
       {users.map((item: MessageItem) => {
         return (
           <div key={item.serverID + "_" + item.nickname}>

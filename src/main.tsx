@@ -1,6 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Home from './pages/home/index'
-
-
-ReactDOM.render(<Home />,document.querySelector("#root"));
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import App from "./app";
+import { RecoilRoot } from "recoil";
+console.log(process.env.RUN_ENV);
+ReactDOM.render(
+	<RecoilRoot>
+		<App />
+	</RecoilRoot>,
+	document.querySelector("#root")
+);

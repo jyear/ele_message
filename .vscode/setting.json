@@ -1,0 +1,13 @@
+{
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		{
+			"language": "html"
+		}
+	],
+	"eslint.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"eslint.format.enable": true
+}

@@ -1,20 +1,20 @@
 import sqlHandlers from "./sql";
-import socketHandlers from "./socket";
+//import socketHandlers from "./socket";
 
 interface Handlers {
-  SendMessage: () => Promise<any>;
-  GetMessage: () => Promise<any>;
+	SendMessage: () => Promise<any>;
+	GetMessage: () => Promise<any>;
 }
 export interface EventData {
-  type: "SendMessage" | "GetMessage";
-  data: any;
+	type: "SendMessage" | "GetMessage";
+	data: any;
 }
 
-const eventList = [];
+// const eventList = [];
 
 const handlers: Handlers = {
   SendMessage: async () => {
-    let start = new Date().getTime();
+    // let start = new Date().getTime();
     const len = 400;
     let data = [];
     for (let i = 0; i < len; i++) {
@@ -31,7 +31,7 @@ const handlers: Handlers = {
     // console.log(`${len}顺序写入`, new Date().getTime() - start);
 
     data = await sqlHandlers.getMessage();
-    console.log(`总条数：`, data.length);
+    console.log("总条数：", data.length);
     // console.log(`${len}顺序写入`, data.length);
     return data;
   },
